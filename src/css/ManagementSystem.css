@@ -1,0 +1,250 @@
+/* src/css/Manajemen.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar-links a.active {
+    color: #947d46;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 2rem;
+    background-color: #f8f8f8;
+    flex: 1;
+}
+
+/* Statistik Cards */
+.statistics-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #947d46;
+}
+
+.gauge {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Kalender */
+.calendar-container {
+    margin-bottom: 2rem;
+    background-color: #947d46;
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+}
+
+.calendar-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-container th, .calendar-container td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.calendar-container th {
+    font-weight: bold;
+    background-color: #7a6937;
+}
+
+/* Tambah Catatan */
+.add-note-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #333;
+    width: 100%;
+    max-width: 250px;
+}
+
+.add-note-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.add-note-button {
+    background-color: #947d46;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Riwayat Catatan */
+.record-history {
+    margin-top: 2rem;
+}
+
+.record-history-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background-color: #947d46;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Tabel */
+.record-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.record-table th, .record-table td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.record-table th {
+    background-color: #947d46;
+    color: white;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    background-color: #303030;
+    color: #d4d4d4;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.footer-links, .footer-contact {
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #d4d4d4;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.footer-links a:hover {
+    color: #947d46;
+}
+
+.footer-contact {
+    line-height: 1.6;
+}
+
+.footer-contact span {
+    display: block;
+}
+
+/* Button and link colors */
+.button-primary {
+    background-color: #947d46;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
