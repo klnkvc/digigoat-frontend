@@ -1,5 +1,4 @@
-.auth-container {
-    position: relative;
+.signup-page {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,19 +11,26 @@
     box-sizing: border-box;
 }
 
-.auth-card {
+.signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-card {
     position: relative;
-    z-index: 1;
     width: 100%;
     max-width: 400px;
     padding: 2rem;
     background-color: white;
     border-radius: 12px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #333;
 }
 
-.auth-logo {
+.signup-logo {
     position: absolute;
     top: -50px;
     left: 50%;
@@ -36,23 +42,22 @@
     z-index: 3;
 }
 
-.auth-form {
+.signup-form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     margin-top: 1rem;
 }
 
-.auth-form label {
+.signup-form label {
     font-weight: bold;
-    margin-bottom: 0.5rem;
     color: #333;
     font-size: 0.95rem;
+    text-align: left;
 }
 
-.auth-form input {
+.signup-form input {
     padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -60,19 +65,19 @@
     box-sizing: border-box;
 }
 
-.password-container {
+.signup-password-container {
     position: relative;
     width: 100%;
 }
 
-.password-container input {
+.signup-password-container input {
     padding-right: 2.5rem;
 }
 
-.password-toggle {
+.signup-password-toggle {
     position: absolute;
     right: 10px;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -81,17 +86,7 @@
     color: #666;
 }
 
-.forgot-password {
-    display: block;
-    text-align: right;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-.auth-button {
+.signup-button {
     padding: 0.75rem;
     border: none;
     border-radius: 4px;
@@ -103,37 +98,20 @@
     transition: background-color 0.3s ease;
 }
 
-.auth-button:hover {
+.signup-button:hover {
     background-color: #45a049;
 }
 
-.google-signin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4285F4;
-    color: white;
-    padding: 0.75rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.google-signin:hover {
-    background-color: #357ae8;
-}
-
-.auth-footer {
+.signup-footer {
     font-size: 0.9rem;
     margin-top: 1rem;
 }
 
-.auth-footer a {
+.signup-footer a {
     color: #4CAF50;
     text-decoration: none;
 }
 
-.auth-footer a:hover {
+.signup-footer a:hover {
     text-decoration: underline;
 }

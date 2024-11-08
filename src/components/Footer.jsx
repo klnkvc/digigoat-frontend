@@ -2,9 +2,9 @@ import React from "react";
 import "../css/Footer.css";
 import logo from "../assets/logo.png";
 import downloadImage from '../assets/download.png';
-import facebookIcon from '../assets/facebook.svg';
-import instagramIcon from '../assets/instagram.svg';
-import twitterIcon from '../assets/twitter.svg';
+import facebookIcon from '../assets/Facebook.png';
+import instagramIcon from '../assets/Instagram.png';
+import twitterIcon from '../assets/Twitter.png';
 
 function Footer() {
   return (
@@ -22,12 +22,10 @@ function Footer() {
           <p>+62 851 1928 3746</p>
           <p>Jl Agraris Soerabaja No. 24</p>
           <div className="footer-section footer-links">
-            <a href="#about">Tentang Kami</a>
-            <a href="#notes">Catatan</a>
-            <a href="#news">Berita</a>
-            <a href="#report">Report</a>
-            <a href="#privacy">Kebijakan Privasi</a>
-            <a href="#terms">Aturan & Ketentuan</a>
+            <a href="/AboutUs">Tentang Kami</a>
+            <a href="/management">Manajemen Sistem</a>
+            <a href="/news">Berita</a>
+            <a href="/recovery">Pemulihan Data</a>
           </div>
         </div>
         

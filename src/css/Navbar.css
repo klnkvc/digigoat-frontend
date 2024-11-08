@@ -1,3 +1,4 @@
+/* src/css/Navbar.css */
 .navbar {
     display: flex;
     align-items: center;
@@ -39,21 +40,20 @@
     color: #333;
     font-weight: 500;
     margin-right: 40px;
+    padding: 10px 15px;
+    border-radius: 8px;
 }
 
-.navbar-login {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.navbar-links a.active-link {
+    background-color: #a67c00; /* Warna untuk halaman aktif */
+    color: #fff;
 }
 
 .login-button {
     background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    color: #000;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #000;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
