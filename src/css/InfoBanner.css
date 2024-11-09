@@ -1,0 +1,19 @@
+.info-banner {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  gap: 15px; /* Memberikan jarak antara gambar dan teks */
+}
+
+.info-banner-image {
+  width: 100%; /* Atur lebar gambar sesuai kebutuhan */
+  height: auto;
+  border-radius: 4px;
+}
+
+.info-banner p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
