@@ -7,14 +7,15 @@ import AboutUs from "./pages/AboutUs";
 import Management from "./pages/ManagementSystem";
 import News from "./pages/News";
 import Recovery from "./pages/Recovery";
-import Tambah from "./pages/tambah";
-import ArticleDetail from './components/ArticleDetail';
+import Tambah from "./pages/Tambah";
+import ArticleDetail from "./components/ArticleDetail";
 import './App.css';
 
 const App = () => {
     return (
         <Router>
             <div className="scrollable">
+                {/* Routing ke berbagai halaman */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />

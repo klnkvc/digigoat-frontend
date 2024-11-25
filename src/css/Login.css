@@ -26,7 +26,7 @@
 
 .auth-logo {
     position: absolute;
-    top: 50px;
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
@@ -137,3 +137,20 @@
 .auth-footer a:hover {
     text-decoration: underline;
 }
+/* Gaya untuk tombol Kembali ke Home */
+.back-home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .back-home-button:hover {
+    text-decoration: underline;
+  }
+  
