@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/Management.css';
 import managementIcon from '../assets/manajemen.png';
-import newsIcon from '../assets/berita.png';
 import dataRecoveryIcon from '../assets/pemulihan.png';
 
 const ManagementSection = () => {
@@ -17,13 +16,6 @@ const ManagementSection = () => {
                         <h3>Manajemen Sistem</h3>
                     </div>
                     <p>Pencatatan Cerdas untuk Pemeliharaan dan Kesehatan Kambing</p>
-                </div>
-                <div className="feature">
-                    <div className="icon-text">
-                        <img src={newsIcon} alt="Berita" className="icon" />
-                        <h3>Berita</h3>
-                    </div>
-                    <p>AI Summarized News: Peternakan Kambing dan Harga Pasar Terkini</p>
                 </div>
                 <div className="feature">
                     <div className="icon-text">
