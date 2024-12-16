@@ -125,3 +125,19 @@
 .cancel-delete:hover {
   background-color: #322405;
 }
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px; /* Agar ada jarak antara dot dan teks */
+}
+
+.status-dot.green {
+  background-color: green;
+}
+
+.status-dot.red {
+  background-color: red;
+}

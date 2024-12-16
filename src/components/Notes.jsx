@@ -12,6 +12,7 @@ function HistoryTable() {
   const [currentNoteId, setCurrentNoteId] = useState(null); 
   const navigate = useNavigate();
 
+  // Fungsi untuk mengambil data notes
   const fetchNotes = async () => {
     setLoading(true);
     setError("");
@@ -33,7 +34,12 @@ function HistoryTable() {
       }
 
       const data = await response.json();
-      setNotes(data);
+      // Periksa apakah data.notes adalah array
+      if (Array.isArray(data.notes)) {
+        setNotes(data.notes); // Set notes jika valid
+      } else {
+        setError("Data notes tidak valid.");
+      }
     } catch (err) {
       console.error(err);
       setError("Terjadi kesalahan saat mengambil data.");
@@ -42,6 +48,7 @@ function HistoryTable() {
     }
   };
 
+  // Fungsi untuk memverifikasi token
   const verifyToken = () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -52,12 +59,14 @@ function HistoryTable() {
     return token;
   };
 
+  // Fungsi untuk menangani sesi yang kadaluarsa
   const handleSessionExpired = () => {
     alert("Sesi telah berakhir. Silakan login kembali.");
     localStorage.removeItem("token");
     navigate("/login");
   };
 
+  // Fungsi untuk menghapus catatan
   const handleHapusCatatan = async (id) => {
     setDeletingId(id);
     try {
@@ -88,23 +97,28 @@ function HistoryTable() {
     }
   };
 
+  // Fungsi untuk membuka pesan peringatan sebelum menghapus catatan
   const openDeleteWarning = (id) => {
     setCurrentNoteId(id);
     setWarningMessage("Apakah Anda yakin ingin menghapus catatan ini?");
   };
 
+  // Fungsi untuk menutup pesan peringatan
   const closeWarning = () => {
     setWarningMessage(""); // Menutup pesan peringatan
   };
 
+  // Mengambil data notes ketika komponen dimuat
   useEffect(() => {
     fetchNotes();
   }, []);
 
+  // Fungsi untuk menambah catatan
   const handleTambahCatatan = () => {
     navigate("/tambah");
   };
 
+  // Penyaringan notes berdasarkan query pencarian
   const filteredNotes = notes.filter((note) =>
     note.idKambing.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -136,11 +150,12 @@ function HistoryTable() {
               <th>No.</th>
               <th>ID Kambing</th>
               <th>Tanggal</th>
-              <th>Umur Kambing</th>
-              <th>Berat</th>
+              <th>Umur Kambing(Tahun)</th>
+              <th>Berat(Kg)</th>
               <th>Jenis Kelamin</th>
+              <th>Kondisi Kesehatan</th>
               <th>Pakan</th>
-              <th>Jumlah Pakan</th>
+              <th>Jumlah Pakan(kg)</th>
               <th>Perawatan</th>
               <th>Catatan</th>
               <th>Aksi</th>
@@ -156,6 +171,7 @@ function HistoryTable() {
                   <td>{note.umurKambing}</td>
                   <td>{note.berat}</td>
                   <td>{note.jenisKelamin}</td>
+                  <td>{note.kondisiKesehatan}</td>
                   <td>{note.pakan}</td>
                   <td>{note.jumlahPakan}</td>
                   <td>{note.perawatan}</td>

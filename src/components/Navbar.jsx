@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import profil from "../assets/user.png"; // Avatar default
+import prof from "../assets/image.png";
+import logout from "../assets/logout.png";
 import "../css/Navbar.css";
 
 const Navbar = () => {
@@ -126,9 +128,18 @@ const Navbar = () => {
                 <div className="profile-header">
                   <img src={profil} alt="Profile Icon" className="profile-avatar" />
                   <span className="profile-name">{username}</span>
+                  <span className="profile-email">{email}</span>
                 </div>
-                <button className="profile-menu-item" onClick={handleModalOpen}>Edit Profil</button>
-                <button className="profile-menu-item" onClick={handleLogout}>Logout</button>
+                <div>
+                  <button className="profile-menu-item" onClick={handleModalOpen}>
+                    <img src={prof} alt="Edit Profil" className="menu-icon" />
+                    Profilku
+                  </button>
+                  <button className="profile-menu-item" onClick={handleLogout}>
+                    <img src={logout} alt="Logout" className="menu-icon" />
+                    Logout
+                  </button>
+                </div>
               </div>
             )}
           </div>

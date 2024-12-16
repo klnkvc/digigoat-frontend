@@ -95,6 +95,7 @@
     object-fit: cover;
     border: none;  /* Menghilangkan border pada avatar */
     transition: transform 0.3s ease;
+    margin-bottom: 10px;
 }
 
 .profile-avatar:hover {
@@ -129,6 +130,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    flex-direction: column;
 }
 
 .profile-avatar-left {
@@ -137,6 +139,10 @@
 
 .profile-name {
     font-weight: bold;
+    font-size: 16px;
+    color: #000;
+}
+.profile-email {
     font-size: 16px;
     color: #000;
 }
@@ -226,5 +232,12 @@
   
   .modal-button:hover {
     background-color: #45a049;
+  }
+  
+  .menu-icon {
+    width: 30px; /* Ukuran ikon */
+    height: 30px; /* Ukuran ikon */
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+    vertical-align: middle; /* Rata tengah vertikal */
   }
   
