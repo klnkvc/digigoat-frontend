@@ -27,7 +27,6 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Validasi input
     if (!email || !password) {
       setMessage('Email dan Password wajib diisi');
       return;
@@ -44,14 +43,10 @@ function Login() {
 
       if (response.ok) {
         setMessage('Login berhasil!');
-
-        // Menyimpan data login di localStorage
-        localStorage.setItem('token', data.token); // Simpan token
-        localStorage.setItem('email', email); // Simpan email (opsional)
-        localStorage.setItem('username', data.username); // Simpan username (opsional)
-        localStorage.setItem('isLoggedIn', 'true'); // Tandai pengguna sebagai logged in
-
-        // Arahkan ke halaman utama
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', email);
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('isLoggedIn', 'true');
         navigate('/');
       } else {
         setMessage(data.message || 'Login gagal. Silakan coba lagi.');
@@ -70,7 +65,7 @@ function Login() {
         <h3>SELAMAT DATANG!</h3>
         <p>Log in to continue access to DigiGoat</p>
         <form className="auth-form" onSubmit={handleLogin}>
-          <label>Email</label>
+          <label>Masuk</label>
           <input
             type="email"
             placeholder="Masukan Email"
