@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import VitePluginStaticCopy from 'vite-plugin-static-copy';
+import * as VitePluginStaticCopy from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
