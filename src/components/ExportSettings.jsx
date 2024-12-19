@@ -10,7 +10,7 @@ const ExportSettings = () => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId'); // Ambil userId dari localStorage
 
-    const response = await fetch('http://localhost:5000/api/export', {
+    const response = await fetch('https://digigoat-backend-production.up.railway.app/api/export', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

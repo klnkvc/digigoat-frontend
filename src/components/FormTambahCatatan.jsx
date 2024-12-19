@@ -48,7 +48,7 @@ const FormTambahCatatan = () => {
 
     try {
       // Kirim data ke backend sesuai format yang diharapkan
-      const response = await fetch("http://localhost:5000/api/notes", {
+      const response = await fetch("https://digigoat-backend-production.up.railway.app/api/notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

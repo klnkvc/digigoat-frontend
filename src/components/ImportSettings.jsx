@@ -18,7 +18,7 @@ const ImportSettings = () => {
     formData.append('file', file);
     formData.append('userId', userId);  // Kirim userId ke backend
 
-    const response = await fetch('http://localhost:5000/api/import', {
+    const response = await fetch('https://digigoat-backend-production.up.railway.app/api/import', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

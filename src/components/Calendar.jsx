@@ -49,7 +49,7 @@ function Calendar() {
       let response;
       if (editNoteId) {
         // Update catatan
-        response = await fetch(`http://localhost:5000/api/schedules/${editNoteId}`, {
+        response = await fetch(`https://digigoat-backend-production.up.railway.app/api/schedules/${editNoteId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ function Calendar() {
         });
       } else {
         // Tambah catatan baru
-        response = await fetch('http://localhost:5000/api/schedules', {
+        response = await fetch('https://digigoat-backend-production.up.railway.app/api/schedules', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function Calendar() {
 
   const deleteNote = async (noteId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/schedules/${noteId}`, {
+      const response = await fetch(`https://digigoat-backend-production.up.railway.app/api/schedules/${noteId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -131,7 +131,7 @@ function Calendar() {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/schedules', {
+      const response = await fetch('https://digigoat-backend-production.up.railway.app/api/schedules', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
