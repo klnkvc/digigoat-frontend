@@ -11,7 +11,7 @@ export default defineConfig({
     outDir: 'dist',  // Tentukan folder output untuk build
     assetsDir: 'assets',  // Tentukan folder untuk menyimpan file aset statis (gambar, font, dll.)
     rollupOptions: {
-      input: '/src/main.jsx', // Tentukan file utama yang digunakan di aplikasi Anda (jika berbeda)
+      input: '/src/index.html', // Tentukan file utama yang digunakan di aplikasi Anda (jika berbeda)
     },
   },
 });
