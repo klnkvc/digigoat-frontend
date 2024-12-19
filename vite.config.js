@@ -1,24 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { VitePluginStaticCopy } from 'vite-plugin-static-copy';
+import StaticCopyPlugin from 'vite-plugin-static-copy'; // Default import
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    VitePluginStaticCopy({
+    StaticCopyPlugin({
       targets: [
         {
-          src: 'src/assets/*',  // Sesuaikan dengan lokasi file yang dibutuhkan
-          dest: 'assets',  // Menyalin ke dalam folder dist/assets
+          src: 'src/assets/*',
+          dest: 'assets',
         },
         {
           src: 'src/css/*',
-          dest: 'css',  // Menyalin CSS ke dalam folder dist/css
+          dest: 'css',
         },
         {
           src: 'src/font/*',
-          dest: 'font',  // Menyalin font ke dalam folder dist/font
+          dest: 'font',
         },
       ],
     }),
