@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3726, // Port untuk pengembangan lokal
+    port: 3726,
   },
-  base: '/',  // Base path jika aplikasi berada di subfolder
 })
