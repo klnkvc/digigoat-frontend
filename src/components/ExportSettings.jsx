@@ -5,12 +5,14 @@ import '../css/ExportSettings.css';
 const ExportSettings = () => {
   const [format, setFormat] = useState('CSV');
   const [month, setMonth] = useState('Januari');
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   const handleExport = async () => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId'); // Ambil userId dari localStorage
 
-    const response = await fetch('https://digigoat-backend-production.up.railway.app/api/export', {
+    const response = await fetch(BASEURL+'/export', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,33 +33,33 @@ const ExportSettings = () => {
   };
 
   return (
-    <section className="export-settings">
-      <h2>Pengaturan Ekspor Data</h2>
-      <label htmlFor="format-export">Format Ekspor</label>
-      <select id="format-export" value={format} onChange={(e) => setFormat(e.target.value)}>
-        <option>CSV</option>
-        <option>EXCEL</option>
-        <option>JSON</option>
-      </select>
+      <section className="export-settings">
+        <h2>Pengaturan Ekspor Data</h2>
+        <label htmlFor="format-export">Format Ekspor</label>
+        <select id="format-export" value={format} onChange={(e) => setFormat(e.target.value)}>
+          <option>CSV</option>
+          <option>EXCEL</option>
+          <option>JSON</option>
+        </select>
 
-      <label htmlFor="date-range">Rentang Bulan</label>
-      <select id="date-range" value={month} onChange={(e) => setMonth(e.target.value)}>
-        <option>Januari</option>
-        <option>Februari</option>
-        <option>Maret</option>
-        <option>April</option>
-        <option>Mei</option>
-        <option>Juni</option>
-        <option>Juli</option>
-        <option>Agustus</option>
-        <option>September</option>
-        <option>Oktober</option>
-        <option>November</option>
-        <option>Desember</option>
-      </select>
+        <label htmlFor="date-range">Rentang Bulan</label>
+        <select id="date-range" value={month} onChange={(e) => setMonth(e.target.value)}>
+          <option>Januari</option>
+          <option>Februari</option>
+          <option>Maret</option>
+          <option>April</option>
+          <option>Mei</option>
+          <option>Juni</option>
+          <option>Juli</option>
+          <option>Agustus</option>
+          <option>September</option>
+          <option>Oktober</option>
+          <option>November</option>
+          <option>Desember</option>
+        </select>
 
-      <button className="export-button" onClick={handleExport}>Ekspor Data</button>
-    </section>
+        <button className="export-button" onClick={handleExport}>Ekspor Data</button>
+      </section>
   );
 };
 

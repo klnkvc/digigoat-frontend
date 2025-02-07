@@ -9,8 +9,10 @@ function HistoryTable() {
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState(null);
   const [warningMessage, setWarningMessage] = useState(""); // Menambahkan state untuk pesan peringatan
-  const [currentNoteId, setCurrentNoteId] = useState(null); 
+  const [currentNoteId, setCurrentNoteId] = useState(null);
   const navigate = useNavigate();
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   // Fungsi untuk mengambil data notes
   const fetchNotes = async () => {
@@ -20,7 +22,7 @@ function HistoryTable() {
       const token = verifyToken();
       if (!token) return;
 
-      const response = await fetch("https://digigoat-backend-production.up.railway.app/api/notes", {
+      const response = await fetch(BASEURL+"/notes", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -73,7 +75,7 @@ function HistoryTable() {
       const token = verifyToken();
       if (!token) return;
 
-      const response = await fetch(`https://digigoat-backend-production.up.railway.app/api/notes/${id}`, {
+      const response = await fetch(BASEURL+`/notes/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -120,98 +122,98 @@ function HistoryTable() {
 
   // Penyaringan notes berdasarkan query pencarian
   const filteredNotes = notes.filter((note) =>
-    note.idKambing.toLowerCase().includes(searchQuery.toLowerCase())
+      note.idKambing.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div className="history-container">
-      <div className="search-bar">
-        <h1 className="history-title">Riwayat Catatan</h1>
-        <input
-          type="text"
-          placeholder="Cari ID Kambing..."
-          className="search-input"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="add-button" onClick={handleTambahCatatan}>
-          Tambah Catatan <span className="plus-icon">+</span>
-        </button>
-      </div>
-
-      {loading ? (
-        <p>Memuat data...</p>
-      ) : error ? (
-        <p className="error-message">{error}</p>
-      ) : (
-        <table className="history-table">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>ID Kambing</th>
-              <th>Tanggal</th>
-              <th>Umur Kambing(Tahun)</th>
-              <th>Berat(Kg)</th>
-              <th>Jenis Kelamin</th>
-              <th>Kondisi Kesehatan</th>
-              <th>Pakan</th>
-              <th>Jumlah Pakan(kg)</th>
-              <th>Perawatan</th>
-              <th>Catatan</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredNotes.length > 0 ? (
-              filteredNotes.map((note, index) => (
-                <tr key={note._id}>
-                  <td>{index + 1}</td>
-                  <td>{note.idKambing}</td>
-                  <td>{new Date(note.tanggal).toLocaleDateString()}</td>
-                  <td>{note.umurKambing}</td>
-                  <td>{note.berat}</td>
-                  <td>{note.jenisKelamin}</td>
-                  <td>{note.kondisiKesehatan}</td>
-                  <td>{note.pakan}</td>
-                  <td>{note.jumlahPakan}</td>
-                  <td>{note.perawatan}</td>
-                  <td>{note.catatan}</td>
-                  <td>
-                    <button
-                      onClick={() => openDeleteWarning(note._id)}
-                      className="delete-button"
-                      disabled={deletingId === note._id}
-                    >
-                      {deletingId === note._id ? "Menghapus..." : "Hapus"}
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="11">Tidak ada catatan ditemukan.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      )}
-
-      {/* Pesan Peringatan Hapus */}
-      {warningMessage && (
-        <div className="delete-warning">
-          <p>{warningMessage}</p>
-          <button
-            onClick={() => handleHapusCatatan(currentNoteId)}
-            className="confirm-delete"
-          >
-            Hapus
-          </button>
-          <button onClick={closeWarning} className="cancel-delete">
-            Batal
+      <div className="history-container">
+        <div className="search-bar">
+          <h1 className="history-title">Riwayat Catatan</h1>
+          <input
+              type="text"
+              placeholder="Cari ID Kambing..."
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="add-button" onClick={handleTambahCatatan}>
+            Tambah Catatan <span className="plus-icon">+</span>
           </button>
         </div>
-      )}
-    </div>
+
+        {loading ? (
+            <p>Memuat data...</p>
+        ) : error ? (
+            <p className="error-message">{error}</p>
+        ) : (
+            <table className="history-table">
+              <thead>
+              <tr>
+                <th>No.</th>
+                <th>ID Kambing</th>
+                <th>Tanggal</th>
+                <th>Umur Kambing(Tahun)</th>
+                <th>Berat(Kg)</th>
+                <th>Jenis Kelamin</th>
+                <th>Kondisi Kesehatan</th>
+                <th>Pakan</th>
+                <th>Jumlah Pakan(kg)</th>
+                <th>Perawatan</th>
+                <th>Catatan</th>
+                <th>Aksi</th>
+              </tr>
+              </thead>
+              <tbody>
+              {filteredNotes.length > 0 ? (
+                  filteredNotes.map((note, index) => (
+                      <tr key={note._id}>
+                        <td>{index + 1}</td>
+                        <td>{note.idKambing}</td>
+                        <td>{new Date(note.tanggal).toLocaleDateString()}</td>
+                        <td>{note.umurKambing}</td>
+                        <td>{note.berat}</td>
+                        <td>{note.jenisKelamin}</td>
+                        <td>{note.kondisiKesehatan}</td>
+                        <td>{note.pakan}</td>
+                        <td>{note.jumlahPakan}</td>
+                        <td>{note.perawatan}</td>
+                        <td>{note.catatan}</td>
+                        <td>
+                          <button
+                              onClick={() => openDeleteWarning(note._id)}
+                              className="delete-button"
+                              disabled={deletingId === note._id}
+                          >
+                            {deletingId === note._id ? "Menghapus..." : "Hapus"}
+                          </button>
+                        </td>
+                      </tr>
+                  ))
+              ) : (
+                  <tr>
+                    <td colSpan="11">Tidak ada catatan ditemukan.</td>
+                  </tr>
+              )}
+              </tbody>
+            </table>
+        )}
+
+        {/* Pesan Peringatan Hapus */}
+        {warningMessage && (
+            <div className="delete-warning">
+              <p>{warningMessage}</p>
+              <button
+                  onClick={() => handleHapusCatatan(currentNoteId)}
+                  className="confirm-delete"
+              >
+                Hapus
+              </button>
+              <button onClick={closeWarning} className="cancel-delete">
+                Batal
+              </button>
+            </div>
+        )}
+      </div>
   );
 }
 

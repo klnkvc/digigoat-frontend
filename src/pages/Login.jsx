@@ -9,6 +9,7 @@ function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const BASEURL=import.meta.env.VITE_APIURL
 
   // Cek apakah pengguna sudah login sebelumnya
   useEffect(() => {
@@ -33,7 +34,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch('https://digigoat-backend-production.up.railway.app/api/auth/login', {
+      const response = await fetch(BASEURL+'/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -58,47 +59,47 @@ function Login() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <img src={logo} alt="DigiGoat Logo" className="auth-logo" />
-        <h2>DigiGoat</h2>
-        <h3>SELAMAT DATANG!</h3>
-        <p>Log in to continue access to DigiGoat</p>
-        <form className="auth-form" onSubmit={handleLogin}>
-          <label>Masuk</label>
-          <input
-            type="email"
-            placeholder="Masukan Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-
-          <div className="password-container">
+      <div className="auth-container">
+        <div className="auth-card">
+          <img src={logo} alt="DigiGoat Logo" className="auth-logo" />
+          <h2>DigiGoat</h2>
+          <h3>SELAMAT DATANG!</h3>
+          <p>Log in to continue access to DigiGoat</p>
+          <form className="auth-form" onSubmit={handleLogin}>
+            <label>Masuk</label>
             <input
-              type={passwordVisible ? 'text' : 'password'}
-              placeholder="Masukan kata sandimu"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+                type="email"
+                placeholder="Masukan Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
             />
-            <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
-              {passwordVisible ? '👁️' : '🙈'}
+
+            <div className="password-container">
+              <input
+                  type={passwordVisible ? 'text' : 'password'}
+                  placeholder="Masukan kata sandimu"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+              />
+              <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
+                {passwordVisible ? '👁️' : '🙈'}
+              </button>
+            </div>
+
+            <button type="submit" className="auth-button">
+              Masuk
             </button>
-          </div>
+          </form>
 
-          <button type="submit" className="auth-button">
-            Masuk
-          </button>
-        </form>
+          {message && <p className="auth-message">{message}</p>}
 
-        {message && <p className="auth-message">{message}</p>}
-
-        <p className="auth-footer">
-          Belum punya akun DigiGoat? <a href="/Register">Daftar</a>
-        </p>
+          <p className="auth-footer">
+            Belum punya akun DigiGoat? <a href="/Register">Daftar</a>
+          </p>
+        </div>
       </div>
-    </div>
   );
 }
 

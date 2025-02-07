@@ -5,6 +5,8 @@ import '../css/ImportSettings.css';
 const ImportSettings = () => {
   const [format, setFormat] = useState('CSV');
   const [file, setFile] = useState(null);
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -18,7 +20,7 @@ const ImportSettings = () => {
     formData.append('file', file);
     formData.append('userId', userId);  // Kirim userId ke backend
 
-    const response = await fetch('https://digigoat-backend-production.up.railway.app/api/import', {
+    const response = await fetch(BASEURL+'/import', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -34,18 +36,18 @@ const ImportSettings = () => {
   };
 
   return (
-    <section className="import-settings">
-      <h2>Pengaturan Impor Data</h2>
-      <label htmlFor="import-format">Format Impor</label>
-      <select id="import-format" value={format} onChange={(e) => setFormat(e.target.value)}>
-        <option>CSV</option>
-        <option>EXCEL</option>
-        <option>JSON</option>
-      </select>
-      <label htmlFor="import-file">Impor Data</label>
-      <input type="file" id="import-file" onChange={handleFileChange} />
-      <button className="import-button" onClick={handleImport}>Import Data</button>
-    </section>
+      <section className="import-settings">
+        <h2>Pengaturan Impor Data</h2>
+        <label htmlFor="import-format">Format Impor</label>
+        <select id="import-format" value={format} onChange={(e) => setFormat(e.target.value)}>
+          <option>CSV</option>
+          <option>EXCEL</option>
+          <option>JSON</option>
+        </select>
+        <label htmlFor="import-file">Impor Data</label>
+        <input type="file" id="import-file" onChange={handleFileChange} />
+        <button className="import-button" onClick={handleImport}>Import Data</button>
+      </section>
   );
 };
 

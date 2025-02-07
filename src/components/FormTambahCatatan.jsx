@@ -16,6 +16,8 @@ const FormTambahCatatan = () => {
   });
 
   const navigate = useNavigate();
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   // Ambil token dari localStorage saat komponen dimuat
   useEffect(() => {
@@ -48,7 +50,7 @@ const FormTambahCatatan = () => {
 
     try {
       // Kirim data ke backend sesuai format yang diharapkan
-      const response = await fetch("https://digigoat-backend-production.up.railway.app/api/notes", {
+      const response = await fetch(BASEURL+"/notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

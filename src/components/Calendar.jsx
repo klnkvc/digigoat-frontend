@@ -8,6 +8,8 @@ function Calendar() {
   const [newNote, setNewNote] = useState('');
   const [goatCode, setGoatCode] = useState('');
   const [editNoteId, setEditNoteId] = useState(null); // ID catatan yang sedang diedit
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -49,7 +51,7 @@ function Calendar() {
       let response;
       if (editNoteId) {
         // Update catatan
-        response = await fetch(`https://digigoat-backend-production.up.railway.app/api/schedules/${editNoteId}`, {
+        response = await fetch(BASEURL+`/schedules/${editNoteId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -59,7 +61,7 @@ function Calendar() {
         });
       } else {
         // Tambah catatan baru
-        response = await fetch('https://digigoat-backend-production.up.railway.app/api/schedules', {
+        response = await fetch(BASEURL+'/schedules', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -97,7 +99,7 @@ function Calendar() {
 
   const deleteNote = async (noteId) => {
     try {
-      const response = await fetch(`https://digigoat-backend-production.up.railway.app/api/schedules/${noteId}`, {
+      const response = await fetch(BASEURL+`/schedules/${noteId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -131,7 +133,7 @@ function Calendar() {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch('https://digigoat-backend-production.up.railway.app/api/schedules', {
+      const response = await fetch(BASEURL+'/schedules', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

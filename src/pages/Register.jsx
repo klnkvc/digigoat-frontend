@@ -12,6 +12,8 @@ function Signup() {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const BASEURL=import.meta.env.VITE_APIURL
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -31,7 +33,7 @@ function Signup() {
     }
 
     try {
-      const response = await fetch('https://digigoat-backend-production.up.railway.app/api/auth/register', {
+      const response = await fetch(BASEURL+'/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullName, email, password }),
@@ -54,70 +56,70 @@ function Signup() {
   };
 
   return (
-    <div className="signup-page">
-      <div className="signup-container">
-        <div className="signup-card">
-          <img src={logo} alt="DigiGoat Logo" className="signup-logo" />
-          <h2>DigiGoat</h2>
-          <h3>SELAMAT DATANG!</h3>
-          <p>Daftar untuk mengakses DigiGoat</p>
+      <div className="signup-page">
+        <div className="signup-container">
+          <div className="signup-card">
+            <img src={logo} alt="DigiGoat Logo" className="signup-logo" />
+            <h2>DigiGoat</h2>
+            <h3>SELAMAT DATANG!</h3>
+            <p>Daftar untuk mengakses DigiGoat</p>
 
-          <form className="signup-form" onSubmit={handleSignup}>
-            <label>Nama Lengkap</label>
-            <input
-              type="text"
-              placeholder="Nama Lengkap"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-            <label>Email</label>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <label>Sandi</label>
-            <div className="signup-password-container">
+            <form className="signup-form" onSubmit={handleSignup}>
+              <label>Nama Lengkap</label>
               <input
-                type={passwordVisible ? 'text' : 'password'}
-                placeholder="Sandi"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+                  type="text"
+                  placeholder="Nama Lengkap"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
               />
-              <span onClick={togglePasswordVisibility} className="signup-password-toggle">
+              <label>Email</label>
+              <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+              />
+              <label>Sandi</label>
+              <div className="signup-password-container">
+                <input
+                    type={passwordVisible ? 'text' : 'password'}
+                    placeholder="Sandi"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <span onClick={togglePasswordVisibility} className="signup-password-toggle">
                 {passwordVisible ? '👁️' : '🙈'}
               </span>
-            </div>
-            <label>Konfirmasi Sandi</label>
-            <div className="signup-password-container">
-              <input
-                type={confirmPasswordVisible ? 'text' : 'password'}
-                placeholder="Konfirmasi Sandi"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-              <span
-                onClick={toggleConfirmPasswordVisibility}
-                className="signup-password-toggle"
-              >
+              </div>
+              <label>Konfirmasi Sandi</label>
+              <div className="signup-password-container">
+                <input
+                    type={confirmPasswordVisible ? 'text' : 'password'}
+                    placeholder="Konfirmasi Sandi"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                <span
+                    onClick={toggleConfirmPasswordVisibility}
+                    className="signup-password-toggle"
+                >
                 {confirmPasswordVisible ? '👁️' : '🙈'}
               </span>
-            </div>
-            <button type="submit" className="signup-button">Daftar</button>
-            <p className="signup-footer">
-              Sudah punya akun? <a href="/login">Masuk</a>
-            </p>
-          </form>
+              </div>
+              <button type="submit" className="signup-button">Daftar</button>
+              <p className="signup-footer">
+                Sudah punya akun? <a href="/login">Masuk</a>
+              </p>
+            </form>
 
-          {message && <p className="signup-message">{message}</p>}
+            {message && <p className="signup-message">{message}</p>}
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 
